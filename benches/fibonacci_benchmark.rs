@@ -12,11 +12,11 @@ fn fibonacci_benchmark(c: &mut Criterion) {
 
 fn fibonacci_multiple_benchmark(c: &mut Criterion) {
     let mut group = c.benchmark_group("Fibonacci");
-    for i in [20, 21].iter() {
-        group.bench_with_input(BenchmarkId::new("fibonacci_recursive", i), i, |b, i| {
+    for i in [3, 13, 21].iter() {
+        group.bench_with_input(BenchmarkId::new("fibonacci_recursive()", i), i, |b, i| {
             b.iter(|| fibonacci::fibonacci_recursive(*i))
         });
-        group.bench_with_input(BenchmarkId::new("fibonacci_iterative", i), i, |b, i| {
+        group.bench_with_input(BenchmarkId::new("fibonacci_iterative()", i), i, |b, i| {
             b.iter(|| fibonacci::fibonacci_iterative(*i))
         });
     }
